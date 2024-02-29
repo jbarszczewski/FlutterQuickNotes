@@ -6,6 +6,6 @@ class NotesListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Text('Notes List');
+    return const Center(child: Text('Notes List'));
   }
 }

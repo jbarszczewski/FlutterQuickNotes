@@ -1,23 +1,26 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_notes/main.dart';
+import 'package:quick_notes/src/routing/app_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
   bool _redirecting = false;
   late final TextEditingController _emailController = TextEditingController();
   late final TextEditingController _passwordController =
       TextEditingController();
   late final StreamSubscription<AuthState> _authStateSubscription;
+  final supabase = Supabase.instance.client;
 
   Future<void> _signIn() async {
     try {
@@ -60,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
       final session = data.session;
       if (session != null) {
         _redirecting = true;
-        Navigator.of(context).pushReplacementNamed('/account');
+        context.pushNamed(AppRoutes.home.name);
       }
     });
     super.initState();

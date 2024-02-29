@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:quick_notes/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+class AccountScreen extends StatefulWidget {
+  const AccountScreen({super.key});
 
   @override
-  _AccountPageState createState() => _AccountPageState();
+  AccountScreenState createState() => AccountScreenState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class AccountScreenState extends State<AccountScreen> {
   final _usernameController = TextEditingController();
   final _websiteController = TextEditingController();
-
+  final supabase = Supabase.instance.client;
   var _loading = true;
 
   /// Called once a user id is received within `onAuthenticated()`
