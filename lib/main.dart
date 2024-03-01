@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
+      debug: true,
       url: const String.fromEnvironment('SUPABASE_URL'),
       anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'));
 
