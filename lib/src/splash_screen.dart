@@ -13,30 +13,30 @@ class SplashScreen extends ConsumerStatefulWidget {
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator.adaptive()),
+    );
+  }
+
+  @override
   void initState() {
     super.initState();
     _redirect();
   }
 
   Future<void> _redirect() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     if (!mounted) {
       return;
     }
 
-    final supabase = ref.read(supabaseClientProviderProvider);
+    final supabase = ref.read(supabaseClientProvider);
     final session = supabase.auth.currentSession;
     if (session != null) {
       context.pushNamed(AppRoutes.home.name);
     } else {
       context.pushNamed(AppRoutes.login.name);
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator.adaptive()),
-    );
   }
 }

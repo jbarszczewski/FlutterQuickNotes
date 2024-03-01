@@ -4,5 +4,5 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 part 'supabase_client.g.dart';
 
 @riverpod
-SupabaseClient supabaseClientProvider(SupabaseClientProviderRef ref) =>
+SupabaseClient supabaseClient(SupabaseClientRef ref) =>
     Supabase.instance.client;
